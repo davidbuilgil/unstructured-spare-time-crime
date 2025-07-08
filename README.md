@@ -8,8 +8,10 @@ This repository contains the analytic code used in the study titled "Unstructure
 
 ## 📁 Structure
 `ISRD_time_script_clean.R`: Main analysis script.
-ISRD_time.Rproj: RStudio project file.
-/data: Folder where the ISRD4 raw data should be placed (not included in this repository due to access restrictions).
+`ISRD_time.Rproj`: RStudio project file.
+`/data`: Folder where the ISRD4 raw data should be placed (not included in this repository due to access restrictions).
+`/plots`: Folder where plots and tables are stored.
+`/documents`: Folder where supporting documentation is stored.
 
 ## ▶️ How to Run the Code
 1. Open the project using ISRD_time.Rproj in RStudio.
