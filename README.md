@@ -39,7 +39,7 @@ The dataset will be made **openly available without restriction at the end of 20
 
 ## 📌 Citation
 
-Buil-Gil, D., Birkbeck, C., Enzmann, D., Arbach, K., Bazon, M. R., Budimlić, M., … Marshall, I. H. (2025). Unstructured Spare Time as an International Predictor of Adolescent Crime. CrimRxiv. https://doi.org/10.21428/cb6ab371.e243b32e
+Buil-Gil, D., Birkbeck, C., Enzmann, D., Arbach, K., Bazon, M. R., Budimlić, M., … Marshall, I. H. (2025). Unstructured Spare Time as an International Predictor of Adolescent Crime. *CrimRxiv.* https://doi.org/10.21428/cb6ab371.e243b32e
 
 
 ---
