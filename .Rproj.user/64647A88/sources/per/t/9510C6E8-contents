@@ -1,0 +1,40 @@
+
+rm(list=ls())
+
+options(scipen=999)
+
+# List of required packages
+packages <- c(
+  "haven", "here", "lavaan", "lavaanPlot", "DiagrammeRsvg", "rsvg", "magick", 
+  "purrr", "forcats", "broom", "vcd", "AER", "rsq", "lme4", "car", 
+  "ggplot2", "ggpubr", "boot", "sandwich", "lmtest", "psych", "MASS",
+  "sjPlot", "tidyr", "dplyr"
+)
+
+# Load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+#Load data
+ISRD4 <- read_sav(here("data/ISRD4-SQ_21.Sav"), encoding="latin1")
+
+ISRD4_short <- ISRD4 %>%
+  select(case_id, srvdate, scountry, school, school_id, srvmode, srvlang, consent,
+         male, age, age_im, birthpc, deprfam, 
+         freeact1, freeact2, freeact3, freeact4, freeact5,
+         webact01, webact02, webact03, webact04, webact06, webact07, webact08,
+         truancyp, truancy_ia, graf_ie, vand_ie, shop_ie, burg_ie,
+         cart_ie, exto_ie, gfig_ie, aslt_ie,
+         drud_ie, shin_ie, cyhc_ie, cyfr_ie,
+         hack_ie, graflyi, vandlyi, shoplyi, burglyi,
+         cartlyi, extolyi, gfiglyi, asltlyi,
+         drudlyi, shinlyi, cyhclyi, cyfrlyi,
+         hacklyi, selfctr1, selfctr2, selfctr3, selfctr4, selfctr5, selfctr6,
+         delpsln_a, delpbun_a, delpasn_a, delpsin_a, delphan_a,
+         nhinciv1, nhinciv2, nhinciv3, schinci1, schinci2, schinci3, schinci4,
+         fambond3, aduknow1, aduknow2, aduknow3, aduknow4,
+         prosoc1, prosoc2, prosoc3, prosoc9, prosoc5,
+         prosoc10, prosoc7, prosoc8,
+         openness
+         )
+
+write_sav(ISRD4_short, here("data/ISRD4-SQ_21_short.sav"))

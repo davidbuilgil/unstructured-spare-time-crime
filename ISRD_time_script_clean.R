@@ -12,7 +12,7 @@ options(scipen=999)
 packages <- c(
   "haven", "here", "lavaan", "lavaanPlot", "DiagrammeRsvg", "rsvg", "magick", 
   "purrr", "forcats", "broom", "vcd", "AER", "rsq", "lme4", "car", 
-  "ggplot2", "ggpubr", "boot", "sandwich", "lmtest", "psych", 
+  "ggplot2", "ggpubr", "boot", "sandwich", "lmtest", "psych", "MASS",
   "sjPlot", "tidyr", "dplyr"
 )
 
@@ -288,7 +288,7 @@ countries_crime <- ISRD4 %>%
 #Merge country-level estimates
 countries <- countries_st %>%
   left_join(countries_crime, by = "scountry")
-write.csv(countries, here('plots/countries.csv'))
+#write.csv(countries, here('plots/countries.csv'))
 
 #Groups of offenders
 ISRD4 <- ISRD4 %>%
@@ -309,78 +309,78 @@ ISRD4 %>%
   group_by(offending_group) %>%
   summarise(mean = mean(unstr_st, na.rm = T))
 ISRD4 %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Argentina") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Austria") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Bosnia Herz.") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Brazil") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Colombia") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Czech Republic") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Denmark") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Estonia") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Finland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Iceland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Lithuania") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Mexico") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Norway") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Poland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Slovenia") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Spain") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Sweden") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Sweden") %>%
   group_by(offending_group) %>%
   summarise(mean = mean(unstr_st, na.rm = T))
 ISRD4 %>%
   filter(scountry == "Switzerland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "UK") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "USA") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "USA") %>%
   group_by(offending_group) %>%
   summarise(mean = mean(unstr_st, na.rm = T))
 ISRD4 %>%
   filter(scountry == "Venezuela") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group, p.adjust.method = "BH", pool.sd = FALSE)}
 
 #Plot boxplots of offending by country
 ggplot(ISRD4, aes(x = offending_group, y = unstr_st, fill = offending_group)) +
@@ -405,7 +405,7 @@ ggplot(ISRD4, aes(x = offending_group, y = unstr_st, fill = offending_group)) +
   ) +
   guides(fill = guide_legend(title = NULL))
 
-ggsave(here('plots/boxplot_by_country.jpg'), width = 8, height = 12)
+#ggsave(here('plots/boxplot_by_country.jpg'), width = 8, height = 12)
 
 #Replicate with groups defined by percentiles across pooled national samples
 quantile(ISRD4$offending, 0.95, na.rm = TRUE)
@@ -426,78 +426,78 @@ ISRD4 %>%
   group_by(offending_group_pooled) %>%
   summarise(mean = mean(unstr_st, na.rm = T))
 ISRD4 %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Argentina") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Austria") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Bosnia Herz.") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Brazil") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Colombia") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Czech Republic") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Denmark") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Estonia") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Finland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Iceland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Lithuania") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Mexico") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Norway") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Poland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Slovenia") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Spain") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Sweden") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "Sweden") %>%
   group_by(offending_group_pooled) %>%
   summarise(mean = mean(unstr_st, na.rm = T))
 ISRD4 %>%
   filter(scountry == "Switzerland") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "UK") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "USA") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 ISRD4 %>%
   filter(scountry == "USA") %>%
   group_by(offending_group_pooled) %>%
   summarise(mean = mean(unstr_st, na.rm = T))
 ISRD4 %>%
   filter(scountry == "Venezuela") %>%
-  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH")}
+  {pairwise.t.test(.$unstr_st, .$offending_group_pooled, p.adjust.method = "BH", pool.sd = FALSE)}
 
 ggplot(ISRD4, aes(x = offending_group_pooled, y = unstr_st, fill = offending_group_pooled)) +
   geom_boxplot() +
@@ -521,7 +521,7 @@ ggplot(ISRD4, aes(x = offending_group_pooled, y = unstr_st, fill = offending_gro
   ) +
   guides(fill = guide_legend(title = NULL))
 
-ggsave(here('plots/boxplot_by_country_pooled.jpg'), width = 8, height = 12)
+#ggsave(here('plots/boxplot_by_country_pooled.jpg'), width = 8, height = 12)
 
 #Explore self-control measures
 #ISRD4$selfctr1 I act on the spur of the moment without stopping to think
@@ -1541,7 +1541,8 @@ summary(model_off_qp)
 rsq(model_off_qp, type='v')
 rsq(model_off_qp, type='kl')
 rsq(model_off_qp, type='sse')
-performance::r2_tjur(model_off_bin)
+#performance::r2_tjur(model_off_qp)
+performance::r2_nagelkerke(model_off_qp)
 anova(model_off_qp_null, model_off_qp, test = "Chisq")
 #tidy(model_off_qp, conf.int = TRUE, exponentiate = TRUE) %>%
 #  print(n = 35)
@@ -1549,6 +1550,32 @@ anova(model_off_qp_null, model_off_qp, test = "Chisq")
 # Clustered SEs by school_id
 model_off_qp_clust_se <- vcovCL(model_off_qp, cluster = ~school_id)
 coeftest(model_off_qp, model_off_qp_clust_se)
+
+# Estimate negative binomial model (robustness check)
+model_off_nb_null <- glm.nb(offending.i ~ 1, data = ISRD4)
+
+model_off_nb <- glm.nb(
+  offending.i ~ z_unstr_st_outside + z_unstr_st_home + z_str_st_home +
+    delinq_peers_bin + z_cfa_selfctr + z_cfa_comexp +
+    z_cfa_parecnt + z_cfa_moral + z_openness + 
+    male + z_age_im + birthpc + z_deprfam +
+    factor(scountry),
+  data = ISRD4
+)
+
+AIC(model_off, model_off_nb)
+model_off_nb$theta
+summary(model_off_nb)
+rsq(model_off_nb, type='v')
+rsq(model_off_nb, type='kl')
+rsq(model_off_nb, type='sse')
+performance::r2_nagelkerke(model_off_nb)
+anova(model_off_nb_null, model_off_nb, test = "Chisq")
+#tidy(model_off_nb, conf.int = TRUE, exponentiate = TRUE) %>%
+#  print(n = 35)
+
+model_off_nb_clust_se <- vcovCL(model_off_nb, cluster = ~school_id)
+coeftest(model_off_nb, model_off_nb_clust_se)
 
 #Estimate quasi-poisson models for each country
 model_off_qp_arg <- glm(offending.i ~ z_unstr_st_outside + z_unstr_st_home + z_str_st_home +
